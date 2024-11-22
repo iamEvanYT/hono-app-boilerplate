@@ -1,0 +1,34 @@
+{
+  "name": "hono-app-boilerplate",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun src/index.ts",
+    "build": "tsc",
+    "dev": "bun --watch src/index.ts",
+    "format": "bun prettier . --write",
+    "lint": "bunx eslint",
+    "fix-lint": "bunx eslint --fix",
+    "analyze": "bun run format && bun run fix-lint"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@types/bun": "latest",
+    "eslint": "^9.15.0",
+    "globals": "^15.12.0",
+    "prettier": "3.3.3",
+    "typescript-eslint": "^8.15.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.7",
+    "cron": "^3.2.1",
+    "eslint-config-prettier": "^9.1.0",
+    "hono": "^4.6.11",
+    "mongodb": "^6.11.0",
+    "zlib": "^1.0.5",
+    "zod": "^3.23.8"
+  }
+}
