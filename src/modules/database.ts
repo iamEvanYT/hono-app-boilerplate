@@ -1,6 +1,6 @@
 import { Collection, Db, MongoClient } from "mongodb";
 import { DB_ENABLED, dbName, mainCollectionName, mongoUrl } from "./config.js";
-import { MainDocument } from "types/mainDocument.js";
+import { MainDocument } from "@/types/mainDocument.js";
 
 // Connect to MongoDB
 export const client = new MongoClient(mongoUrl);

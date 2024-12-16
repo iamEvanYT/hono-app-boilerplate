@@ -2,12 +2,12 @@
 import fs from "fs";
 import { Hono } from "hono";
 import { trimTrailingSlash } from "hono/trailing-slash";
-import { errorHandler } from "middlewares/error-handler.js";
-import { logging } from "middlewares/logging.js";
-import { parseGzippedJson } from "middlewares/parse-gzip-json.js";
-import { port } from "modules/config.js";
-import { createIndexes } from "modules/database-indexes.js";
-import { client } from "modules/database.js";
+import { errorHandler } from "@/middlewares/error-handler.js";
+import { logging } from "@/middlewares/logging.js";
+import { parseGzippedJson } from "@/middlewares/parse-gzip-json.js";
+import { port } from "@/modules/config.js";
+import { createIndexes } from "@/modules/database-indexes.js";
+import { client } from "@/modules/database.js";
 import cluster from "node:cluster";
 import { availableParallelism } from "node:os";
 import process from "node:process";

@@ -7,14 +7,16 @@
     "build": "tsc",
     "dev": "bun --watch src/index.ts",
     "format": "bun prettier . --write",
-    "lint": "bunx eslint",
-    "fix-lint": "bunx eslint --fix",
+    "lint": "eslint",
+    "fix-lint": "eslint --fix",
     "analyze": "bun run format && bun run fix-lint"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
     "@types/bun": "latest",
     "eslint": "^9.15.0",
+    "eslint-import-resolver-typescript": "^3.7.0",
+    "eslint-plugin-import": "^2.31.0",
     "globals": "^15.12.0",
     "prettier": "3.3.3",
     "typescript-eslint": "^8.15.0"
@@ -27,7 +29,7 @@
     "cron": "^3.2.1",
     "eslint-config-prettier": "^9.1.0",
     "hono": "^4.6.11",
-    "mongodb": "^6.11.0",
+    "mongoose": "^8.9.0",
     "zlib": "^1.0.5",
     "zod": "^3.23.8"
   }

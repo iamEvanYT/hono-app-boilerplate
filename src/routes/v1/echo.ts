@@ -1,7 +1,7 @@
 import { Hono } from "hono";
-import { type ContextWithParsedBody, parseJSONBody } from "middlewares/body-parser.js";
-import { authMiddleware } from "modules/authorization.js";
-import { EchoSchema } from "schemas/echo.js";
+import { type ContextWithParsedBody, parseJSONBody } from "@/middlewares/body-parser.js";
+import { authMiddleware } from "@/modules/authorization.js";
+import { EchoSchema } from "@/schemas/echo.js";
 
 const routes = new Hono();
 
