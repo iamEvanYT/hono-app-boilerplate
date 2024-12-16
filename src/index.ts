@@ -6,12 +6,11 @@ import { errorHandler } from "@/middlewares/error-handler.js";
 import { logging } from "@/middlewares/logging.js";
 import { parseGzippedJson } from "@/middlewares/parse-gzip-json.js";
 import { port } from "@/modules/config.js";
-import { createIndexes } from "@/modules/database-indexes.js";
-import { client } from "@/modules/database.js";
 import cluster from "node:cluster";
 import { availableParallelism } from "node:os";
 import process from "node:process";
 import path from "path";
+import mongoose from "mongoose";
 
 const numCPUs = availableParallelism();
 
@@ -47,9 +46,6 @@ const app = new Hono();
 app.use(trimTrailingSlash());
 app.use(parseGzippedJson);
 app.use(logging);
-
-// Create Indexes
-createIndexes();
 
 // Error handling middleware
 app.onError(errorHandler);
@@ -101,9 +97,13 @@ console.log(`Backend Server (Process ${process.pid}) listening on port ${port}`)
 
 // Graceful shutdown
 process.on("SIGINT", async () => {
-  console.log("Shutting down gracefully...");
-  await client.close();
-  console.log("MongoDB connection closed");
+  console.log("\nShutting down gracefully...");
+
+  if (mongoose.connection.readyState === 1) {
+    await mongoose.disconnect();
+    console.log("MongoDB connection closed");
+  }
+
   process.exit(0);
 });
 
