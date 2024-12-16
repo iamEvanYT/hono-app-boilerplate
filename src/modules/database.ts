@@ -1,17 +1,15 @@
-import { Collection, Db, MongoClient } from "mongodb";
-import { DB_ENABLED, dbName, mainCollectionName, mongoUrl } from "./config.js";
-import { MainDocument } from "types/mainDocument.js";
+import { DB_NAME, DB_ENABLED, MONGO_URL } from "./config.js";
+import MessageModel from "@/schemas/database/message.js";
+import mongoose from "mongoose";
 
 // Connect to MongoDB
-export const client = new MongoClient(mongoUrl);
-
 if (DB_ENABLED) {
-  await client.connect();
+  await mongoose.connect(MONGO_URL, {
+    dbName: DB_NAME
+  });
 }
 
-export const database: Db = client.db(dbName);
-
-export const mainCollection: Collection<MainDocument> = database.collection(mainCollectionName);
+export const Message = MessageModel;
 
 if (DB_ENABLED) {
   console.log("Connected to MongoDB");
