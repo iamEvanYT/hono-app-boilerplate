@@ -1,7 +1,12 @@
 import Mongoose, { Schema } from "mongoose";
 
 // Schema
-const schema = new Schema({
+type DocumentSchema = {
+  userId: number;
+  message: string;
+  createdAt: Date;
+};
+const documentSchema = new Schema<DocumentSchema>({
   userId: {
     type: Number,
     required: true
@@ -18,9 +23,9 @@ const schema = new Schema({
 
 // Indexes
 // WARNING: Indexes will NOT be recreated when you update them. You will have to manually drop and recreate the indexes.
-schema.index({ userId: -1 }, { name: "userId" });
-schema.index({ createdAt: -1 }, { name: "createdAt" });
+documentSchema.index({ userId: -1 }, { name: "userId" });
+documentSchema.index({ createdAt: -1 }, { name: "createdAt" });
 
 // Model
-const model = Mongoose.model("Message", schema);
+const model = Mongoose.model<DocumentSchema>("Message", documentSchema);
 export default model;
