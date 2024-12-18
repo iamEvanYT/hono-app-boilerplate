@@ -13,6 +13,8 @@
     "paths": {
       "@/*": ["./*"]
     },
+    "strict": true,
+    "strictNullChecks": true,
     "noEmit": true
   },
   "include": ["src/**/*"],

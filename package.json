@@ -9,7 +9,8 @@
     "format": "bun prettier . --write",
     "lint": "eslint",
     "fix-lint": "eslint --fix",
-    "analyze": "bun run format && bun run fix-lint"
+    "check-types": "tsc --noEmit",
+    "analyze": "bun run format && bun run fix-lint && bun run check-types"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

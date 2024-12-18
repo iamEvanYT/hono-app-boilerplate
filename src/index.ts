@@ -51,10 +51,10 @@ app.use(logging);
 app.onError(errorHandler);
 
 // Function to recursively import routes
-function importRoutes(folderPath, baseRoute = "") {
+function importRoutes(folderPath = "", baseRoute = "") {
   const files = fs.readdirSync(folderPath);
 
-  const importPromises = [];
+  const importPromises: Promise<void>[] = [];
 
   const importFile = async (file: string) => {
     const filePath = path.join(folderPath, file);
