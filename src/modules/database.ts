@@ -1,5 +1,5 @@
-import { DB_NAME, DB_ENABLED, MONGO_URL } from "./config.js";
-import MessageModel from "@/schemas/database/message.js";
+import { DB_NAME, DB_ENABLED, MONGO_URL } from "./config";
+import MessageModel from "@/schemas/database/message";
 import mongoose from "mongoose";
 
 // Connect to MongoDB

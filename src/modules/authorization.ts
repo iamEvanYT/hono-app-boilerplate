@@ -1,5 +1,5 @@
 import type { Context, Next } from "hono";
-import { authKey, environment } from "./config.js";
+import { authKey, environment } from "./config";
 
 export function isAuthorized(authHeader: string | undefined): boolean {
   if (environment !== "Testing") {
